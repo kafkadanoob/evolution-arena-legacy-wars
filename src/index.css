@@ -1,0 +1,145 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-arena-bg: #0a0a0a;
+  --color-arena-text: #e3e5e4;
+  --color-arena-muted: #6b6d6c;
+  --color-arena-border: #2a2a2a;
+  --color-arena-pixel-on: #e3e5e4;
+  --color-arena-pixel-off: #1a1a1a;
+  --color-arena-pixel-api-on: #48494b;
+  --color-arena-glow: #00ff9f;
+  --color-arena-danger: #ff4466;
+
+  --font-pixel: 'Press Start 2P', ui-monospace, monospace;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-arena-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-arena-bg text-arena-text antialiased;
+    font-family: var(--font-body);
+    margin: 0;
+    min-height: 100svh;
+  }
+
+  #root {
+    min-height: 100svh;
+  }
+}
+
+/* normiessignal-style: 40×40 buffer, integer CSS upscale only */
+canvas.pixel-canvas,
+.pixel-canvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+  image-rendering: -webkit-optimize-contrast;
+  display: block;
+  flex-shrink: 0;
+  /* width/height set inline as 40×scale px — do not use 100% here */
+}
+
+.normie-canvas-wrap {
+  line-height: 0;
+  background: #0a0a0a;
+}
+
+.normie-canvas-wrap--bordered {
+  border: 1px solid #2a2a2a;
+  box-shadow:
+    inset 0 0 0 1px rgba(227, 229, 228, 0.04),
+    0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+.normie-card {
+  position: relative;
+  border-radius: 0.5rem;
+  border: 1px solid #2a2a2a;
+  background: rgba(10, 10, 10, 0.85);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.normie-card:hover {
+  border-color: rgba(0, 255, 159, 0.45);
+  box-shadow:
+    0 0 20px rgba(0, 255, 159, 0.12),
+    inset 0 0 24px rgba(0, 255, 159, 0.03);
+}
+
+.normie-card--selected {
+  border-color: #00ff9f;
+  box-shadow:
+    0 0 28px rgba(0, 255, 159, 0.2),
+    inset 0 0 32px rgba(0, 255, 159, 0.06);
+}
+
+.normie-card__art {
+  width: 100%;
+  min-height: 140px;
+}
+
+.normie-card__slot {
+  width: 100%;
+}
+
+.normie-preview-stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  padding: 1rem;
+  border: 1px solid #2a2a2a;
+  border-radius: 0.5rem;
+  background:
+    linear-gradient(180deg, rgba(0, 255, 159, 0.03) 0%, transparent 48%),
+    #0a0a0a;
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.normie-preview-slot {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.normie-detail-panel {
+  background:
+    linear-gradient(135deg, rgba(0, 255, 159, 0.02) 0%, transparent 40%),
+    rgba(10, 10, 10, 0.9);
+}
+
+/* Scanlines off by default on preview — enable per-component if needed */
+.crt-scanlines::after {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.05) 3px,
+    rgba(0, 0, 0, 0.05) 4px
+  );
+  z-index: 10;
+}
+
+@media (max-width: 639px) {
+  .normie-preview-stage {
+    padding: 0.75rem;
+  }
+}

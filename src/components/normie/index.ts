@@ -1,0 +1,7 @@
+export { NormieRenderer, NormieRendererWithMeta } from '@/components/normie/NormieRenderer'
+export type { NormieRendererProps } from '@/components/normie/NormieRenderer'
+export { NormieLoadingFace } from '@/components/normie/NormieLoadingFace'
+export { NormieBurnedFallback } from '@/components/normie/NormieBurnedFallback'
+export { NormieCard } from '@/components/normie/NormieCard'
+export { NormieDetailPanel } from '@/components/normie/NormieDetailPanel'
+export { NormieTraitList } from '@/components/normie/NormieTraitList'
