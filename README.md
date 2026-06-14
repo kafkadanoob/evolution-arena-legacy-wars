@@ -1,89 +1,62 @@
 # Evolution Arena: Legacy Wars
 
-Polished web game for the **Normies Hackathon** (submission by June 15, 2026). Forge legacies in a monochrome pixel arena using **live** [Normies API](https://api.normies.art) data — no mocks in demo.
+**A Pixel Battle Royale where real on-chain Normies fight, burn, and evolve.**
 
-## Stack
+### Concept
+In Evolution Arena: Legacy Wars, you select real Normies as fighters and pit them against each other in an arena. Unlike typical games, battles use **live data from the Normies API** — every attack literally burns and modifies the actual 40×40 pixel data of the Normies using real XOR mechanics.
 
-- React 19 + Vite 8 + TypeScript
-- Tailwind CSS v4 + shadcn-style UI primitives
-- Framer Motion animations
-- HTML5 Canvas 40×40 Normie renderer (crisp upscale, no blur)
-- React Router SPA with 5 screen shells
-- localStorage-ready (leaderboards later)
+Winners evolve by regrowing some pixels. Losers carry permanent scars. Every fight contributes to a **Legacy Score** based on survival, destruction caused, and awakened agent power. The strongest legacies rise on the leaderboard.
 
-## Quick start
+This creates meaningful, persistent progression tied directly to the Normies universe.
 
-```bash
-cd evolution-arena
-npm install
-npm run dev
-```
+### Demo
+**[Watch the Gameplay Demo](https://your-demo-video-link-here)**  
+*(60-90 second video recommended)*
 
-Open [http://localhost:5173](http://localhost:5173). The home hero loads a live Normie via `GET /normie/{id}/pixels`.
+### Key Features
+- Browse and select up to 3 real Normies from the live API
+- Difficulty levels (Easy → Legacy) with increasing depth and agent commentary
+- Auto and Step-by-step battle modes
+- Real pixel-burn combat with visual damage flashes
+- Manual targeting and Power Moves for strategy
+- Post-battle evolution and legacy scoring
+- Legacy Dashboard showing battle history and scars
+- Leaderboard of the strongest Normies
 
-## Project structure
+### How to Play
+1. Go to the **Normies Browser** and build your squad
+2. Enter the **Arena Hub** and start a battle
+3. Watch real pixel damage happen live
+4. Check your fighters’ evolving legacies in the **Legacy Dashboard**
 
-```
-src/
-  api/           # Normies API client + cache
-  components/
-    normie/      # NormieRenderer, loading face
-    layout/      # TopNav, MobileNav, AppShell
-    ui/          # Button (shadcn pattern)
-  constants/     # API base URL, theme colors
-  hooks/         # useNormiePixels
-  lib/           # pixels (parse, XOR), utils
-  pages/         # Home, Arena, Battle, Browser, Legacy
-  types/         # Normie / canvas types
-```
+### Tech Stack
+- React + TypeScript + Vite
+- Tailwind CSS + Framer Motion
+- Canvas-based crisp pixel rendering
+- Normies Public API (heavy, authentic usage)
+- Zustand for state management
 
-## Normie Renderer (deliverable #1)
+### Live Demo
+[Live Application](https://your-vercel-link-here)
 
-`NormieRenderer` fetches composited pixels, draws a 40×40 grid on canvas with `image-rendering: pixelated`, supports:
+### GitHub Repository
+[github.com/kafkadanoob/evolution-arena-legacy-wars](https://github.com/kafkadanoob/evolution-arena-legacy-wars)
 
-- Configurable scale (default 24px/cell)
-- Highlight / flip animation hooks
-- Burned Normie fallback via history endpoint
-- Arena vs API color modes
-- Loading spinner (spinning pixel face) and error retry
+---
 
-## API endpoints used (live)
+### How to Update Your README on GitHub
 
-| Endpoint | Purpose |
-|----------|---------|
-| `GET /normie/{id}/pixels` | Composited 40×40 bitmap |
-| `GET /normie/{id}/original/pixels` | Pre-canvas bitmap |
-| `GET /normie/{id}/canvas/pixels` | XOR transform layer |
-| `GET /normie/{id}/canvas/diff` | Added/removed pixels |
-| `GET /normie/{id}/canvas/info` | Action points, level |
-| `GET /normie/{id}/traits` | Decoded traits |
-| `GET /normie/{id}/owner` | Ownership |
-| `GET /history/normie/{id}/versions` | Transform history |
-| `GET /history/burned/{id}/pixels` | Burned fallback |
-| `GET /health` | API health |
+1. Open your project in VS Code / Cursor.
+2. Find and open the file **`README.md`** in the root folder.
+3. Replace everything with the content above.
+4. Update these two lines with your actual links:
+   - `[Watch the Gameplay Demo](https://your-demo-video-link-here)`
+   - `[Live Application](https://your-vercel-link-here)`
+5. Save the file.
 
-Docs: [api.normies.art/llms.txt](https://api.normies.art/llms.txt)
-
-## Why this extends Normies lore
-
-Canvas burns become **action points** in battle; XOR diffs drive evolution visuals; history versions grant Legacy-mode bonuses; awakened agents commentate fights — all grounded in on-chain mechanics, not fiction.
-
-## Roadmap
-
-1. ✅ Project setup + Normie Renderer
-2. ✅ Normie Browser / selector (search, filters, squad selection, canvas diff wave)
-3. Battle simulation engine
-4. Full UI polish + difficulty slider
-5. Replay, share links, leaderboard
-
-## Deploy
+6. Push the update with these terminal commands:
 
 ```bash
-npm run build
-```
-
-Deploy `dist/` to Vercel or Netlify (static SPA).
-
-## License
-
-Hackathon submission — Normies ecosystem fan project.
+git add README.md
+git commit -m "Update README with final description and demo links"
+git push
